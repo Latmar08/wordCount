@@ -4,36 +4,36 @@
 
 int main(int argc, char* argv[]) {
 	char ch, count = 1;
-	FILE* p;  //ÎÄ¼şÖ¸Õë
+	FILE* p;  //æ–‡ä»¶æŒ‡é’ˆ
 	errno_t err;
 
-	//ÅĞ¶ÏÊÇ·ñÊäÈëÎÄ¼ş
+	//åˆ¤æ–­æ˜¯å¦è¾“å…¥æ–‡ä»¶
 	if (argc != 3) {
-		printf("ÇëÊ¹ÓÃ¸ñÊ½£º%s ÎÄ¼şÃû", argv[0]);
-		exit(1);        //²»ÊÇÕı³£ÍË³ö
+		printf("è¯·ä½¿ç”¨æ ¼å¼ï¼š%s æ–‡ä»¶å", argv[0]);
+		exit(1);        //ä¸æ˜¯æ­£å¸¸é€€å‡º
 	}
 
-	//ÅĞ¶ÏÊÇ·ñÕı³£´ò¿ªÎÄ¼ş
+	//åˆ¤æ–­æ˜¯å¦æ­£å¸¸æ‰“å¼€æ–‡ä»¶
 	if ((err = fopen_s(&p,argv[2],"r"))) {
-		printf("´ò¿ªÎÄ¼ş %s Ê§°Ü", argv[2]);
-		exit(1);      //´ò¿¨ÎÄ¼şÊ§°Ü£¬·ÇÕı³£ÍË³ö
+		printf("æ‰“å¼€æ–‡ä»¶ %s å¤±è´¥", argv[2]);
+		exit(1);      //æ‰“å¡æ–‡ä»¶å¤±è´¥ï¼Œéæ­£å¸¸é€€å‡º
 	}
 
 	if (strcmp(argv[1], "-c") == 0) {
 		count = 0;
-		while ((ch = getc(p)) != EOF) {  //EOF±íÊ¾ÎÄ¼ş½áÊø
+		while ((ch = getc(p)) != EOF) {  //EOFè¡¨ç¤ºæ–‡ä»¶ç»“æŸ
 			count++;
 		}
-		printf("\n×Ö·ûÊıÎª %d ¸ö\n", count);
+		printf("\nå­—ç¬¦æ•°ä¸º %d ä¸ª\n", count);
 	}else if (strcmp(argv[1], "-w") == 0) {
 		count = 0;
-		while ((ch = getc(p)) != EOF) {  //EOF±íÊ¾ÎÄ¼ş½áÊø
+		while ((ch = getc(p)) != EOF) {  //EOFè¡¨ç¤ºæ–‡ä»¶ç»“æŸ
 			if ((ch == ' ') || (ch == ',')) 
 				count++;
 		}
-		printf("\nµ¥´ÊÊıÎª %d ¸ö\n", count+1);
+		printf("\nå•è¯æ•°ä¸º %d ä¸ª\n", count+1);
 	}
-	printf("*******");
+	
 	fclose(p);
 	return 0;
 
