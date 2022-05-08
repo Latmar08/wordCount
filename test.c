@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 		}
 		printf("\n单词数为 %d 个\n", count+1);
 	}
-
+	printf("*******");
 	fclose(p);
 	return 0;
 
