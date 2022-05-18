@@ -14,26 +14,26 @@ int main(int argc, char* argv[]) {
 	}
 
 	//判断是否正常打开文件
-	if ((err = fopen_s(&p,argv[2],"r"))) {
+	if ((err = fopen_s(&p, argv[2], "r"))) {
 		printf("打开文件 %s 失败", argv[2]);
 		exit(1);      //打卡文件失败，非正常退出
 	}
 
-	if (strcmp(argv[1], "-c") == 0) {
+	if ((strcmp(argv[1], "-c") == 0) || (strcmp(argv[1], "-C") == 0)) {
 		count = 0;
 		while ((ch = getc(p)) != EOF) {  //EOF表示文件结束
 			count++;
 		}
 		printf("\n字符数为 %d 个\n", count);
-	}else if (strcmp(argv[1], "-w") == 0) {
+	}
+	else if ((strcmp(argv[1], "-w") == 0) || (strcmp(argv[1], "-W") == 0)) {
 		count = 0;
 		while ((ch = getc(p)) != EOF) {  //EOF表示文件结束
-			if ((ch == ' ') || (ch == ',')) 
+			if ((ch == ' ') || (ch == ','))
 				count++;
 		}
-		printf("\n单词数为 %d 个\n", count+1);
+		printf("\n单词数为 %d 个\n", count + 1);
 	}
-	printf("**************");
 	fclose(p);
 	return 0;
 
